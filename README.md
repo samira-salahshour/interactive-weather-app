@@ -18,7 +18,7 @@ npm run build
 ```
 You can choose a city with this 3 ways:
 1. Panning the map
-2. Enter city name (e.g Rotterdam)
+2. Enter the city name (e.g Rotterdam)
 3. Enter coordination {lat},{lng} (e.g 51.9118,4.3731) 
 ```
 
