@@ -1,32 +1,55 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-app-bar app color="#161a53 " dark>
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="./assets/ClimatesLogo.png"
+          transition="scale-transition"
+          width="50"
+        />
+      </div>
+      <v-spacer></v-spacer>
+      <span class="font-weight-bold mr-2">Interactive Weather App</span>
+    </v-app-bar>
+
+    <v-main class="mainClass">
+      <router-view />
+      <v-snackbar
+        color="red"
+        absolute
+        shaped
+        top
+        left
+        type="error"
+        v-model="errorInfo.status"
+        timeout="2000"
+      >
+        {{ errorInfo.text }}
+      </v-snackbar>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import Vue from "vue";
+import { mapGetters } from "vuex";
 
-#nav {
-  padding: 30px;
+export default Vue.extend({
+  name: "App",
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["errorInfo"]),
+  },
+});
+</script>
+<style>
+.mainClass {
+  background-color: #2f3371;
 }
 </style>
